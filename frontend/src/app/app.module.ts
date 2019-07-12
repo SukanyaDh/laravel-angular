@@ -10,6 +10,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { RequestResetComponent } from './Password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './Password/response-reset/response-reset.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ApiresponseService } from './services/apiresponse.service';
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { AfterLoginService } from "./services/after-login.service";
+import { BeforeLoginService } from './services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [ApiresponseService,TokenService,AuthService,AfterLoginService,BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiresponseService } from '../services/apiresponse.service';
+import { TokenService } from '../services/token.service';
+import {  Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +16,25 @@ export class LoginComponent implements OnInit {
     password:null
   };
   public error = null;
-  constructor(private http:HttpClient) { }
+  constructor(private apicall:ApiresponseService,
+              private tokenData:TokenService,
+              private router: Router,
+              private auth:AuthService) { }
 
   onSubmit()
   {
-    this.http.post('http://localhost:8000/api/login',this.form).subscribe(
-      data=>console.log(data),
+    this.apicall.login(this.form).subscribe(
+      data=>this.handleResponse(data),
       error=>this.handleErrors(error)
     );
+  }
+
+  handleResponse(data)
+  {
+    this.tokenData.setToken(data.access_token);
+    this.auth.changeStatus(true);
+    this.router.navigateByUrl('/profile');
+    //localStorage.setItem('token',data.access_token);
   }
 
   handleErrors(error)
