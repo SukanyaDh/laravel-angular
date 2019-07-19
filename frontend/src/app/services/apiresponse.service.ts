@@ -18,4 +18,13 @@ export class ApiresponseService {
   {
     return this.http.post(`${this.baseUrl}/login`,data);
   }
+
+  sendPasswordResetLink(data): Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/sendPasswordResetLink`,data);
+  }
+  resetPassword(data): Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/resetPassword`,data);
+  }
 }
