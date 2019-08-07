@@ -21,6 +21,7 @@ export class RequestResetComponent implements OnInit {
 
   onSubmit()
   {
+    this.notify.info('Wait...',{timeout:5000});
     this.apiresponse.sendPasswordResetLink(this.form).subscribe(
       data=>this.handleResponse(data),
       error=>this.notify.error(error.error.error)
@@ -28,7 +29,7 @@ export class RequestResetComponent implements OnInit {
   }
   handleResponse(data)
   {
-    console.log(data);
+    this.notify.success(data.success,{timeout:0});
     this.form.email=null;
   }
 }

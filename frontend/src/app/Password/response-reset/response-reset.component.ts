@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiresponseService } from 'src/app/services/apiresponse.service';
-import { SnotifyService } from 'ng-snotify';
+import { SnotifyService, Snotify } from 'ng-snotify';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
@@ -34,7 +34,16 @@ export class ResponseResetComponent implements OnInit {
   }
   handleResponse(data)
   {
-    this.router.navigateByUrl('/login');
+    let _router = this.router;
+    this.notify.confirm('Done! Please login with new password.',{
+      buttons:[
+        {text: 'Okay', action: toster=>{
+          _router.navigateByUrl('/login'),
+          this.notify.remove(toster.id)
+        }},
+      ]
+    });
+    
   }
 
   handleErrors(error)
