@@ -8,6 +8,8 @@ import { RequestResetComponent } from './Password/request-reset/request-reset.co
 import { ResponseResetComponent } from './Password/response-reset/response-reset.component';
 import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryFormComponent } from './categories/category-form/category-form.component';
 const appRoute: Routes=[
   {
     path:"login",
@@ -22,6 +24,16 @@ const appRoute: Routes=[
   {
     path:"profile",
     component:ProfileComponent,
+    canActivate:[AfterLoginService]
+  },
+  {
+    path:"categories",
+    component:CategoriesComponent,
+    canActivate:[AfterLoginService]
+  },
+  {
+    path:"categories/add",
+    component:CategoryFormComponent,
     canActivate:[AfterLoginService]
   },
   {

@@ -17,8 +17,23 @@ export class SignupComponent implements OnInit {
     password_confirmation:null
   };
   public error = [];
+  public errorPassword:any;
   constructor(private apicall:ApiresponseService,private tokenData:TokenService,
     private router: Router,private auth:AuthService) { }
+
+
+  onKeyDown()  
+  {
+    if(this.form.password!=this.form.password_confirmation)
+    {
+      this.errorPassword = 'Password and confirm password must be same';
+      
+    }
+    else
+    this.errorPassword = "";
+    return this.errorPassword;
+  }
+
   onSubmit()
   {
     this.apicall.signup(this.form).subscribe(

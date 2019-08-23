@@ -13,19 +13,39 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group([
+/* Route::group([
 
     'middleware' => 'api',
     
 ], function () {
 
-    Route::post('login', 'AuthController@login');
+    
+
+});
+
+Route::middleware('jwt.auth')->get('me', function(Request $request) {
+    return auth()->user();
+});
+Route::group([
+    'middleware'=>['auth:api']
+],
+function()
+{
+    Route::post('category/add','CategoryController@create');
+}
+); */
+
+//Route::post('login', 'AuthController@login');
+Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    //Route::post('me', 'UserController@me');
 
     Route::post('sendPasswordResetLink', 'ResetPasswordController@sendEmail');
     Route::post('resetPassword', 'ResetPasswordController@resetPassword');
-
-});
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('category/add','CategoryController@create');
+    Route::get('category/index','CategoryController@index');
+    Route::post('details', 'AuthController@details');
+    });

@@ -16,6 +16,15 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from "./services/after-login.service";
 import { BeforeLoginService } from './services/before-login.service';
 import {  SnotifyService, ToastDefaults, SnotifyModule } from 'ng-snotify';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoryFormComponent } from './categories/category-form/category-form.component';
+import { DataTablesModule } from 'angular-datatables';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +35,9 @@ import {  SnotifyService, ToastDefaults, SnotifyModule } from 'ng-snotify';
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    CategoriesComponent,
+    CategoryFormComponent,
+    LoaderComponent,
     
   ],
   imports: [
@@ -33,12 +45,15 @@ import {  SnotifyService, ToastDefaults, SnotifyModule } from 'ng-snotify';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SnotifyModule
-    
+    SnotifyModule,
+    DataTablesModule,
+    MatProgressSpinnerModule
   ],
   providers: [ApiresponseService,TokenService,AuthService,AfterLoginService,BeforeLoginService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-    SnotifyService
+    SnotifyService,
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
   
   ],
   bootstrap: [AppComponent]
