@@ -48,5 +48,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('category/add','CategoryController@create');
     Route::get('category/index','CategoryController@index');
     Route::get('category/show/{id}','CategoryController@show');
+    Route::post('category/update/{id}','CategoryController@update');
     Route::post('details', 'AuthController@details');
     });

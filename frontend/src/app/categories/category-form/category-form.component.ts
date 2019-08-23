@@ -20,11 +20,21 @@ export class CategoryFormComponent implements OnInit {
   constructor(private apicall:ApiresponseService,private tokenData:TokenService,private auth:AuthService,private router:Router, private notify:SnotifyService) { }
   onSubmit()
   {
+    if(!this.categoryInfo)
+    {
+      this.apicall.addCategory(this.form).subscribe(
+        data=>this.handleResponse(data),
+        error=>this.handleErrors(error)
+      );
+    }
+    else
+    {
+      this.apicall.updateCategory(this.form,this.categoryInfo.category_id).subscribe(
+        data=>this.handleResponse(data),
+        error=>this.handleErrors(error)
+      );
+    }
     
-    this.apicall.addCategory(this.form).subscribe(
-      data=>this.handleResponse(data),
-      error=>this.handleErrors(error)
-    );
   }
   handleResponse(data)
   {

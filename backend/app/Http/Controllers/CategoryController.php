@@ -81,7 +81,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::where(['category_id'=>$id])->first();
+        if($category)
+        {
+            $requestData = $request->all();
+            $update = Category::where(['category_id'=>$id])->update($requestData);
+            //$category->update($requestData);
+            return response()->json(['success' => 'Category updated successfully'], 200);
+        }
     }
 
     /**

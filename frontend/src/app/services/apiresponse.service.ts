@@ -38,6 +38,12 @@ export class ApiresponseService {
     this.createAuthorizationHeader(headers);
     return this.http.post(`${this.baseUrl}/category/add`,data,{ headers: this.createAuthorizationHeader(headers)});
   }
+  updateCategory(data,categoryId): Observable<any>
+  {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.post(`${this.baseUrl}/category/update/`+categoryId,data,{ headers: this.createAuthorizationHeader(headers)});
+  }
   listCategory(): Observable<any>
   {
     let headers = new HttpHeaders();
