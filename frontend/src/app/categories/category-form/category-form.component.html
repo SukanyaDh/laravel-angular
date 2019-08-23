@@ -1,9 +1,10 @@
 <div class="container-fluid">
+          
     <form #addCategory=ngForm (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Category name</label>
             <div class="col-sm-4">
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="form.name">
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="form.name" value={{categoryInfo.name}}>
             </div>
         </div>
         <div class="form-group row">
@@ -14,7 +15,12 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-10 offset-2">
-              <button type="submit" class="btn btn-primary" [disabled]="!addCategory.valid">Add</button>&nbsp;
+              <button type="submit" class="btn btn-primary" [disabled]="!addCategory.valid">
+                <span *ngIf="!categoryInfo else edit">Add</span>
+                <ng-template #edit>
+                        <span >Update</span>
+                </ng-template>
+            </button>&nbsp;
 
             </div>
           </div>

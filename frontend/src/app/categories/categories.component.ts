@@ -13,6 +13,7 @@ export class CategoriesComponent implements OnInit {
   
   public categories: [];
   public error = [];
+  public categoryInfo:any;
   constructor(private apicall:ApiresponseService,private tokenData:TokenService,private auth:AuthService,private router:Router) { }
 
   getCategories() {
@@ -21,6 +22,17 @@ export class CategoriesComponent implements OnInit {
       console.log(data);
       this.categories = data['success'];
     });
+  }
+  onClick(categoryId)
+  {
+    this.apicall.showCategory(categoryId).subscribe(
+      (data:any)=>{
+        localStorage.setItem('categoryInfo',JSON.stringify(data.category));
+        
+        this.router.navigateByUrl('/categories/edit/'+categoryId);
+      }
+        
+    );
   }
 
   ngOnInit() {

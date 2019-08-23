@@ -15,10 +15,12 @@ export class CategoryFormComponent implements OnInit {
     name:null,
     description:null
   };
+  public categoryInfo:any;
   public error = [];
   constructor(private apicall:ApiresponseService,private tokenData:TokenService,private auth:AuthService,private router:Router, private notify:SnotifyService) { }
   onSubmit()
   {
+    
     this.apicall.addCategory(this.form).subscribe(
       data=>this.handleResponse(data),
       error=>this.handleErrors(error)
@@ -35,5 +37,18 @@ export class CategoryFormComponent implements OnInit {
     this.error = error.error.errors;
   }
   ngOnInit() {
+    console.log(this.router.url);
+    if(this.router.url!="/categories/add")
+    {
+      this.categoryInfo = JSON.parse(localStorage.getItem('categoryInfo'));
+      this.form.name = this.categoryInfo.name;
+      this.form.description = this.categoryInfo.description;
+    }
+    else
+    {
+      localStorage.removeItem('categoryInfo');
+    }
   }
+
+  
 }

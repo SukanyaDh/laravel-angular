@@ -54,7 +54,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::where(['category_id'=>$id])->first();
+        if($category)
+        {
+            return response()->json(['category' => $category], 200);
+        }
     }
 
     /**
