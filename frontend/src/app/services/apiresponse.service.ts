@@ -56,5 +56,11 @@ export class ApiresponseService {
     this.createAuthorizationHeader(headers);
     return this.http.get(`${this.baseUrl}/category/show/`+categoryId,{ headers: this.createAuthorizationHeader(headers)});
   }
+  deleteCategory(categoryId): Observable<any>
+  {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.get(`${this.baseUrl}/category/destroy/`+categoryId,{ headers: this.createAuthorizationHeader(headers)});
+  }
 
 }

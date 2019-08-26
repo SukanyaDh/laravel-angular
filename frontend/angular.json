@@ -23,18 +23,20 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              
               "node_modules/ng-snotify/styles/material.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "src/styles.css",
-              
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/sb-admin.min.css",
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
               
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/datatables.net/js/jquery.dataTables.js"
-              
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/sb-admin.min.js"
             ]
           },
           "configurations": {

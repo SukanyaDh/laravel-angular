@@ -42,6 +42,11 @@ const appRoute: Routes=[
     canActivate:[AfterLoginService]
   },
   {
+    path:"categories/destroy/:id",
+    component:CategoryFormComponent,
+    canActivate:[AfterLoginService]
+  },
+  {
     path:"request-password-reset",
     component:RequestResetComponent,
     canActivate:[BeforeLoginService]

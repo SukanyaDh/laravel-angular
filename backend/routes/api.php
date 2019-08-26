@@ -49,5 +49,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('category/index','CategoryController@index');
     Route::get('category/show/{id}','CategoryController@show');
     Route::post('category/update/{id}','CategoryController@update');
+    Route::get('category/destroy/{id}','CategoryController@destroy');
     Route::post('details', 'AuthController@details');
     });

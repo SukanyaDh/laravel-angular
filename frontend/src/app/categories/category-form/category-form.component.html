@@ -4,13 +4,16 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Category name</label>
             <div class="col-sm-4">
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="form.name" value={{categoryInfo.name}}>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="form.name" required>
+            <div class="error" [hidden]="!error.name && !form.name">{{error.name}}</div>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
             <div class="col-sm-4">
-            <textarea class="form-control" id="description" name="description" [(ngModel)]="form.description"></textarea>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="form.description" required></textarea>
+            <div class="error" [hidden]="!error.description">{{error.description}}</div>
+            
             </div>
         </div>
         <div class="form-group row">

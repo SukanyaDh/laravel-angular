@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { TokenService } from './services/token.service';
+import { TokenService } from '../services/token.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class AppComponent {
-  title = 'frontend';
+export class SidebarComponent implements OnInit {
   public loggedIn:boolean;
   private tokenData;
   constructor(private auth:AuthService,private router:Router,private token:TokenService) { }
@@ -19,4 +18,5 @@ export class AppComponent {
     
     this.auth.authStatus.subscribe(value=>this.loggedIn=value);
   }
+
 }

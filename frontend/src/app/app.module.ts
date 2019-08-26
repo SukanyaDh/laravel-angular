@@ -24,6 +24,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     CategoriesComponent,
     CategoryFormComponent,
     LoaderComponent,
+    SidebarComponent,
     
   ],
   imports: [

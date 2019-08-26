@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light">
+<!-- <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <div>
         <a class="navbar-brand" routerLink="login" *ngIf='!loggedIn'>Login</a>
@@ -7,4 +7,31 @@
         <a class="navbar-brand" href="#" (click)="logout($event)" *ngIf='loggedIn'>Logout</a>
     </div>
     
-</nav>
+</nav> -->
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" routerLink="/" *ngIf='loggedIn'>Angular Laravel Demo</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <div class="input-group">
+    
+      </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+     
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="navbar-brand" href="#" (click)="logout($event)" *ngIf='loggedIn'>Logout</a>
+        
+      </li>
+      
+      
+    </ul>
+
+  </nav>

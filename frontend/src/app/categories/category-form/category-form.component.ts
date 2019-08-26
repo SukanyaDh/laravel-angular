@@ -45,6 +45,7 @@ export class CategoryFormComponent implements OnInit {
   handleErrors(error)
   {
     this.error = error.error.errors;
+    console.log(this.error);
   }
   ngOnInit() {
     console.log(this.router.url);

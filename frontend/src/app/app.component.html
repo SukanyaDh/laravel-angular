@@ -1,7 +1,12 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<app-navbar></app-navbar>
-<ng-snotify></ng-snotify>
-<div class="container">
-        <app-loader></app-loader>
-    <router-outlet></router-outlet> 
+<app-navbar *ngIf="loggedIn"></app-navbar>
+<div id="wrapper">
+    <app-sidebar *ngIf="loggedIn"></app-sidebar> 
+    <ng-snotify></ng-snotify>
+    <div id="content-wrapper">
+        <div class="container-fluid">
+            <app-loader></app-loader>
+            <router-outlet></router-outlet> 
+        </div>
+    </div>
 </div>
+

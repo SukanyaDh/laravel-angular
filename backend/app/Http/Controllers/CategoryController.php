@@ -99,6 +99,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::where(['category_id'=>$id])->delete();
+        if($category)
+        {
+            
+            return response()->json(['success' => 'Category deleted successfully'], 200);
+        }
     }
 }
