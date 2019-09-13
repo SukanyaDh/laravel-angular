@@ -1,0 +1,59 @@
+<div class="container-fluid">
+          
+    <form [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+        <div class="form-group row" >
+            <label for="staticEmail" class="col-sm-2 col-form-label">Product name</label>
+            <div class="col-sm-4">
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" >
+            <span class="help-block" *ngIf="f.name.errors && submitted">
+                    <div class="error" *ngIf="f.name.errors.required" >Name is required</div>
+            </span>
+            
+            </div>
+        </div>
+        <div class="form-group row" >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-4">
+            <textarea class="form-control" id="description" name="description" formControlName="description" required></textarea>
+            <span class="help-block" *ngIf="f.description.errors && submitted">
+                <div class="error" *ngIf="f.description.errors.required" >Description is required</div>
+        </span>
+            
+            </div>
+        </div>
+        <div class="form-group row" >
+            <label for="inputPassword" class="col-sm-2 col-form-label">Select Category</label>
+            <div class="col-sm-4">
+            <select name="category_id" formControlName="category_id">
+                <option value="0">Select Category</option>
+                <option *ngFor="let category of categoryList" value="{{category.category_id}}">
+                    {{category.name}}
+                </option>
+            </select>
+            <span class="help-block" *ngIf="f.category_id.errors && submitted">
+                <div class="error" *ngIf="f.category_id.errors.required" >Category is required</div>
+            </span>
+            </div>
+        </div>
+        <div class="form-group row" >
+                <label for="staticEmail" class="col-sm-2 col-form-label">Product price</label>
+                <div class="col-sm-4">
+                <input type="text" class="form-control" id="price" name="price" formControlName="price" required>
+                <span class="help-block" *ngIf="f.price.errors && submitted">
+                    <div class="error" *ngIf="f.price.errors.required" >Price is required</div>
+                </span>
+                </div>
+            </div>
+        <div class="form-group row">
+            <div class="col-sm-10 offset-2">
+              <button type="submit" class="btn btn-primary" >
+                <span >Add</span>
+                <ng-template #edit>
+                        <span >Update</span>
+                </ng-template>
+            </button>&nbsp;
+
+            </div>
+          </div>
+    </form>
+</div>

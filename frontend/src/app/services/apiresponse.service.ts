@@ -63,4 +63,23 @@ export class ApiresponseService {
     return this.http.get(`${this.baseUrl}/category/destroy/`+categoryId,{ headers: this.createAuthorizationHeader(headers)});
   }
 
+  listProducts(): Observable<any>
+  {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.get(`${this.baseUrl}/product/index`,{ headers: this.createAuthorizationHeader(headers)});
+  }
+  addProduct(data): Observable<any>
+  {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.post(`${this.baseUrl}/product/add`,data,{ headers: this.createAuthorizationHeader(headers)});
+  }
+  listCategoryDrodown(): Observable<any>
+  {
+    let headers = new HttpHeaders();
+    this.createAuthorizationHeader(headers);
+    return this.http.get(`${this.baseUrl}/category/list`,{ headers: this.createAuthorizationHeader(headers)});
+  }
+
 }

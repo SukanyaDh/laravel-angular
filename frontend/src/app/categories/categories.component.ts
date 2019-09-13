@@ -4,6 +4,7 @@ import { TokenService } from '../services/token.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { SnotifyService } from 'ng-snotify';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-categories',
@@ -15,7 +16,11 @@ export class CategoriesComponent implements OnInit {
   public categories: [];
   public error = [];
   public categoryInfo:any;
-  constructor(private apicall:ApiresponseService,private tokenData:TokenService,private auth:AuthService,private router:Router, private notify:SnotifyService) { }
+  public form = {
+    name:null,
+    description:null
+  };
+  constructor(private apicall:ApiresponseService,private tokenData:TokenService,private auth:AuthService,private router:Router, private notify:SnotifyService,private shared:SharedService) { }
 
   getCategories() {
     this.categories = [];
@@ -34,6 +39,11 @@ export class CategoriesComponent implements OnInit {
       }
         
     );
+  }
+
+  onEditItem(index: number) {
+        this.shared.index=index;
+        this.router.navigateByUrl('/categories/edit/'+index);
   }
 
   onClickDelete(categoryId)

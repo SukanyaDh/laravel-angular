@@ -16,12 +16,12 @@
             </thead>
             <tbody>
                 
-                  <tr *ngFor="let category of categories;">
+                  <tr *ngFor="let category of categories; let i=index">
                 
                     <td>{{category.category_id}}</td>
                     <td>{{category.name}}</td>
                     <td>{{category.description}}</td>
-                    <td><button (click)="onClick(category.category_id)" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>&nbsp;
+                    <td><button (click)="onEditItem(category.category_id)" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>&nbsp;
                       <button (click)="onClickDelete(category.category_id)" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                     </td>
                   </tr>

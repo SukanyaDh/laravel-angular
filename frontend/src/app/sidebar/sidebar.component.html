@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" routerLink="/" *ngIf='loggedIn'>
         <i class="fa fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
@@ -11,5 +11,10 @@
         <a class="nav-link" routerLink="categories" *ngIf='loggedIn'>
         <i class="fa fa-fw fa-chart-area"></i>
         <span>Categories</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="products" *ngIf='loggedIn'>
+        <i class="fa fa-fw fa-chart-area"></i>
+        <span>Products</span></a>
     </li>
 </ul>

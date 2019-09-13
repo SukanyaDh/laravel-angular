@@ -10,6 +10,8 @@ import { BeforeLoginService } from './services/before-login.service';
 import { AfterLoginService } from './services/after-login.service';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoryFormComponent } from './categories/category-form/category-form.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductsFormComponent } from './products/products-form/products-form.component';
 const appRoute: Routes=[
   {
     path:"login",
@@ -55,7 +57,17 @@ const appRoute: Routes=[
     path:"response-password-reset",
     component:ResponseResetComponent,
     canActivate:[BeforeLoginService]
-  }
+  },
+  {
+    path:"products",
+    component:ProductsComponent,
+    canActivate:[AfterLoginService]
+  },
+  {
+    path:"products/add",
+    component:ProductsFormComponent,
+    canActivate:[AfterLoginService]
+  },
 ];
 @NgModule({
   declarations: [],

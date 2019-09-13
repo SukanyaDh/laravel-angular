@@ -50,5 +50,15 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('category/show/{id}','CategoryController@show');
     Route::post('category/update/{id}','CategoryController@update');
     Route::get('category/destroy/{id}','CategoryController@destroy');
+    Route::get('category/list','CategoryController@list');
+
+    Route::post('product/add','ProductsController@create');
+    Route::get('product/index','ProductsController@index');
+    Route::get('product/show/{id}','ProductsController@show');
+    Route::post('product/update/{id}','ProductsController@update');
+    Route::get('product/destroy/{id}','ProductsController@destroy');
+
+
+
     Route::post('details', 'AuthController@details');
     });

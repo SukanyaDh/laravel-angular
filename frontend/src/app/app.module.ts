@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,6 +25,8 @@ import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductsFormComponent } from './products/products-form/products-form.component';
 
 
 @NgModule({
@@ -40,12 +42,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     CategoryFormComponent,
     LoaderComponent,
     SidebarComponent,
+    ProductsComponent,
+    ProductsFormComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     SnotifyModule,
     DataTablesModule,

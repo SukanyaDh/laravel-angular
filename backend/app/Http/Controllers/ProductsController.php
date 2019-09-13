@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
-use App\Category;
-
-class CategoryController extends Controller
+use App\Products;
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return response()->json(['success' => $categories], 200);
-    }
-
-    public function list()
-    {
-        $categories = Category::select('category_id','name')->get();
-        return response()->json(['success' => $categories], 200);
+        $products = Products::all();
+        return response()->json(['success' => $products], 200);
     }
 
     /**
@@ -30,14 +22,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(CategoryRequest $request)
+    public function create(Request $request)
     {
-        
         $request = $request->all();
-        $category = Category::create($request);
-        if($category)
+        $product = Products::create($request);
+        if($product)
         {
-            return response()->json(['success' => 'Category added successfully'], 200);
+            return response()->json(['success' => 'Product added successfully'], 200);
         }
     }
 
@@ -47,9 +38,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -60,10 +51,10 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::where(['category_id'=>$id])->first();
-        if($category)
+        $product = Products::where(['product_id'=>$id])->first();
+        if($product)
         {
-            return response()->json(['category' => $category], 200);
+            return response()->json(['product' => $product], 200);
         }
     }
 
@@ -87,13 +78,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::where(['category_id'=>$id])->first();
-        if($category)
+        $product = Product::where(['product_id'=>$id])->first();
+        if($product)
         {
             $requestData = $request->all();
-            $update = Category::where(['category_id'=>$id])->update($requestData);
+            $update = Product::where(['product_id'=>$id])->update($requestData);
             //$category->update($requestData);
-            return response()->json(['success' => 'Category updated successfully'], 200);
+            return response()->json(['success' => 'Product updated successfully'], 200);
         }
     }
 
@@ -105,11 +96,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::where(['category_id'=>$id])->delete();
-        if($category)
-        {
-            
-            return response()->json(['success' => 'Category deleted successfully'], 200);
-        }
+        //
     }
 }
