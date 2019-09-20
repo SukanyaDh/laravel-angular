@@ -27,7 +27,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductsFormComponent } from './products/products-form/products-form.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { ProductsFormComponent } from './products/products-form/products-form.co
     HttpClientModule,
     SnotifyModule,
     DataTablesModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [ApiresponseService,TokenService,AuthService,AfterLoginService,BeforeLoginService,
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

@@ -4,10 +4,16 @@
         <div class="form-group row" >
             <label for="staticEmail" class="col-sm-2 col-form-label">Product name</label>
             <div class="col-sm-4">
-            <input type="text" class="form-control" id="name" name="name" formControlName="name" >
+            <input type="text" class="form-control" id="name" formControlName="name" >
             <span class="help-block" *ngIf="f.name.errors && submitted">
-                    <div class="error" *ngIf="f.name.errors.required" >Name is required</div>
+                    <div class="error" *ngIf="name.errors.required" >Name is required</div>
+                   
+                    
             </span>
+            <div class="error" *ngIf="name.dirty && name.errors?.maxlength ">Name should be maximum 5 characters long</div>
+            <div class="error" *ngIf="name.dirty && name.errors?.minlength ">Name should be minimum 1 characters long</div>
+            
+            
             
             </div>
         </div>
@@ -16,7 +22,7 @@
             <div class="col-sm-4">
             <textarea class="form-control" id="description" name="description" formControlName="description" required></textarea>
             <span class="help-block" *ngIf="f.description.errors && submitted">
-                <div class="error" *ngIf="f.description.errors.required" >Description is required</div>
+                <div class="error" *ngIf="f.description.errors.required" >Description is required</div> 
         </span>
             
             </div>
@@ -41,7 +47,9 @@
                 <input type="text" class="form-control" id="price" name="price" formControlName="price" required>
                 <span class="help-block" *ngIf="f.price.errors && submitted">
                     <div class="error" *ngIf="f.price.errors.required" >Price is required</div>
+                    
                 </span>
+                <div class="error" *ngIf=" f.price.errors && f.price.errors.pattern" >Price must be a valid number</div>
                 </div>
             </div>
         <div class="form-group row">

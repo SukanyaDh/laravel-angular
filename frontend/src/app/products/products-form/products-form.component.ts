@@ -24,16 +24,31 @@ export class ProductsFormComponent implements OnInit {
   formProduct: FormGroup;
   createProductForm()
   {
-    console.log("here");
-    this.formProduct = new FormGroup({
-      name:new FormControl('',Validators.required),
+    
+    this.formProduct = this.formBuilder.group({
+      name:['',Validators.compose([Validators.required,Validators.maxLength(5)])],
+      description:['',[Validators.required]],
+      category_id:['',[Validators.required]],
+      price:['',[Validators.required,Validators.pattern("^[0-9]*$"),]]
+    })
+    
+    /* this.formProduct = new FormGroup({
+      name: new FormControl('', Validators.compose([  
+        Validators.required,  
+        Validators.minLength(1),   
+        Validators.maxLength(10),
+      ])), 
       description:new FormControl('',Validators.required),
       category_id:new FormControl('',Validators.required),
       price:new FormControl('',Validators.required)
-    })
+    }) */
+    
   }
 
-
+  checkControls(){
+    this.formProduct.controls.name
+   // debugger;
+  }
 
   
   public error=[];
@@ -47,10 +62,13 @@ export class ProductsFormComponent implements OnInit {
     })
   }
   get f() { 
-   
+   //console.log(this.formProduct.controls);
     return this.formProduct.controls; 
   }
-  
+  get name()
+  {
+    return this.formProduct.get('name');
+  }
   onSubmit()
   {
     this.submitted = true;
@@ -59,11 +77,11 @@ export class ProductsFormComponent implements OnInit {
     }
     else
     {
-      
-    this.apiCall.addProduct(this.formProduct).subscribe(
-      data=>this.handleResponse(data),
-      error=>this.handleErrors(error)
-
+      console.log(this.formProduct.value);
+    this.apiCall.addProduct(this.formProduct.value).subscribe(
+      data=> this.handleResponse(data),
+      error=> this.handleErrors(error)
+     
     )
     }
     
@@ -76,18 +94,13 @@ export class ProductsFormComponent implements OnInit {
 
   handleErrors(error)
   {
-    this.error = error.error.errors;
-    console.log(this.error);
+    //this.error = error.error.errors;
+    console.log(error);
   }
 
   ngOnInit() {
     this.getCategoryList();
-    this.formProduct = new FormGroup({
-      name:new FormControl('',Validators.required),
-      description:new FormControl('',Validators.required),
-      category_id:new FormControl('',Validators.required),
-      price:new FormControl('',Validators.required)
-    })
+    
   }
 
 }
